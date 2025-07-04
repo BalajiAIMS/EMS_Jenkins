@@ -29,13 +29,8 @@
             <version>5.8.0</version>
         </dependency>
 
-        <!-- ✅ Extent Reports -->
-        <dependency>
-            <groupId>com.aventstack</groupId>
-            <artifactId>extentreports</artifactId>
-            <version>5.1.1</version>
-        </dependency>
-
+        
+      
         <!-- ✅ Apache POI (Excel reading/writing) -->
         <dependency>
             <groupId>org.apache.poi</groupId>
@@ -47,6 +42,12 @@
             <artifactId>poi-ooxml</artifactId>
             <version>5.2.5</version>
         </dependency>
+        <dependency>
+    <groupId>com.aventstack</groupId>
+    <artifactId>extentreports</artifactId>
+    <version>4.1.7</version>  <!-- Recommended stable version -->
+</dependency>
+
     </dependencies>
 
     <!-- ✅ Surefire plugin for TestNG XML execution -->

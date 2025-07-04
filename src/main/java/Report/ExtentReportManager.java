@@ -11,24 +11,21 @@ public class ExtentReportManager {
 
     public static ExtentReports getInstance() {
         if (extent == null) {
-            // Create Reports directory if it doesn't exist
-            String reportDir = System.getProperty("user.dir") + "\\Reports\\";
+            String reportDir = System.getProperty("user.dir") + "/Reports/";
             new java.io.File(reportDir).mkdirs();
 
-            // Create a timestamped report file
-            String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-            ExtentSparkReporter spark = new ExtentSparkReporter(reportDir + "Report_" + timeStamp + ".html");
+            ExtentSparkReporter spark = new ExtentSparkReporter(reportDir+"ExtentReport.html");
 
             spark.config().setDocumentTitle("Automation Report");
-            spark.config().setReportName("Automation Testing");
+            spark.config().setReportName("EMS Automation Report");
 
             extent = new ExtentReports();
             extent.attachReporter(spark);
-            extent.setSystemInfo("Tester Name", "Balaji Naik");
-            extent.setSystemInfo("Environment", "DEV Server");
+            extent.setSystemInfo("Tester", "Balaji Naik");
+            extent.setSystemInfo("Environment", "DEV");
             extent.setSystemInfo("Browser", "Chrome");
-            extent.setSystemInfo("Platform", System.getProperty("os.name"));
         }
         return extent;
     }
 }
+

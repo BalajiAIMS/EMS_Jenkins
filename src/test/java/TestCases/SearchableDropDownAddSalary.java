@@ -1,15 +1,12 @@
 package TestCases;
 
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.Test;
-import org.testng.annotations.BeforeClass;
-import org.testng.AssertJUnit;
 import java.time.Duration;
+
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
+import org.testng.AssertJUnit;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -25,18 +22,14 @@ public class SearchableDropDownAddSalary extends BaseClass {
 
     public ExtentTest test;
     WebDriverWait wait;
-    DashBoardPage dbp;
-    LoginPage lp;
-    SalaryPage sp;
+   
    
 
     @BeforeClass
     public void setup() {
         launchBrowser();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        dbp = new DashBoardPage(driver);
-        sp = new SalaryPage(driver);
-        lp=new LoginPage(driver);
+      
         // ⬅️ initialize popup page object
     }
 
@@ -44,7 +37,10 @@ public class SearchableDropDownAddSalary extends BaseClass {
     public void checkingSearchableDropdownAddSalary() {
         test = extent.createTest("EMS Task-1377 - Check searchable dropdown in Add Salary Page");
         ExtentTestManager.setTest(test);
-
+      LoginPage lp=new LoginPage(driver);
+      SalaryPage sp=new SalaryPage(driver);
+      DashBoardPage dbp=new DashBoardPage(driver);
+      
         try {
             // -------- TRY BLOCK --------
         	  lp.userLogin(prop.getProperty("email"), prop.getProperty("password"));

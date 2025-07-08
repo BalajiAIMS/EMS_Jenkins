@@ -1,0 +1,8 @@
+POM\SalaryPage.class
+Report\ExtentReportManager.class
+Report\ExtentTestManager.class
+Utils\ListnersImplementation.class
+POM\LoginPage.class
+Base\BaseClass.class
+POM\InvoicePage.class
+POM\DashBoardPage.class

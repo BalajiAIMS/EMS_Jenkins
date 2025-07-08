@@ -1,19 +1,12 @@
 package TestCases;
 
-
-import org.testng.Assert;
-import org.testng.AssertJUnit;
-import org.testng.annotations.*;
-import org.testng.Assert;
-import org.testng.AssertJUnit;
 import java.time.Duration;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
+import org.testng.Assert;
+import org.testng.annotations.*;
 import com.aventstack.extentreports.ExtentTest;
-
-
 import Base.BaseClass;
 import POM.DashBoardPage;
 import POM.InvoicePage;
@@ -21,24 +14,22 @@ import POM.LoginPage;
 import Report.ExtentTestManager;
 
 @Listeners(Utils.ListnersImplementation.class)
-public class AddSymbolUnderDescriptionArea extends BaseClass{
+public class AddSymbolUnderDescriptionArea extends BaseClass {
 
-	public  ExtentTest test;
+    
+    public ExtentTest test;
     WebDriverWait wait;
-    InvoicePage ip;
-    DashBoardPage dbp;
     LoginPage lp;
-    
-    
+   InvoicePage ip;
+   DashBoardPage dbp;
+
     @BeforeClass
     public void setup() {
         launchBrowser();
-       
-        wait = new WebDriverWait(driver, Duration.ofSeconds(5));    
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         ip = new InvoicePage(driver);
-        dbp = new DashBoardPage(driver);
-        lp=new LoginPage(driver);
-        
+        dbp=new DashBoardPage(driver);
+        lp= new LoginPage(driver);
     }
 
     @Test(priority = 1)
@@ -48,7 +39,7 @@ public class AddSymbolUnderDescriptionArea extends BaseClass{
 
         try {
             // ---------- TRY BLOCK: Main Logic ----------
-           lp.userLogin(prop.getProperty("email"), prop.getProperty("password"));
+            lp.userLogin(prop.getProperty("email"), prop.getProperty("password"));
             wait.until(ExpectedConditions.titleContains("Dashboard"));
 
             // Handle popup
@@ -77,8 +68,8 @@ public class AddSymbolUnderDescriptionArea extends BaseClass{
 
         } catch (Exception e) {
             // ---------- CATCH BLOCK: Handle Errors ----------
-            Assert.fail("Test failed in Add Invoice Page: " + e.getMessage());
-            AssertJUnit.fail("Test failed: " + e.getMessage());
+            test.fail("Test failed in Add Invoice Page: " + e.getMessage());
+            Assert.fail("Test failed: " + e.getMessage());
 
         } finally {
             // ---------- FINALLY BLOCK: Always Runs ----------
@@ -112,8 +103,8 @@ public class AddSymbolUnderDescriptionArea extends BaseClass{
 
         } catch (Exception e) {
             // ---------- CATCH BLOCK ----------
-            AssertJUnit.fail("Test failed in Edit Invoice Page: " + e.getMessage());
-            AssertJUnit.fail("Test failed: " + e.getMessage());
+            test.fail("Test failed in Edit Invoice Page: " + e.getMessage());
+            Assert.fail("Test failed: " + e.getMessage());
 
         } finally {
             // ---------- FINALLY BLOCK ----------
@@ -121,16 +112,13 @@ public class AddSymbolUnderDescriptionArea extends BaseClass{
         }
     }
 
-   
-
-	@AfterClass
+    @AfterClass
     public void tearDown() {
         closeBrowser();
     }
 
-	 @AfterSuite
-	    public void tearDownExtent() {
-	        extent.flush();
-	    }
+    @AfterSuite
+    public void flushExtent() {
+        extent.flush();
+    }
 }
-	

@@ -21,7 +21,7 @@ public class ListnersImplementation extends BaseClass implements ITestListener{
 	            String name = result.getMethod().getMethodName();
 	            LocalDate currentDate = LocalDate.now();
 	            String timestamp = LocalTime.now().toString().replace(":", "-") + "-" + LocalDate.now();
-	            File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+	            File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 	            File dest = new File(System.getProperty("user.dir")+"\\ScreenShots\\"+name+"-"+timestamp+"-"+currentDate+"-"+name+".png");
 	            org.openqa.selenium.io.FileHandler.copy(src, dest);
 	            ExtentTestManager.getTest().addScreenCaptureFromPath(dest.getAbsolutePath());
